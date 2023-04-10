@@ -5,13 +5,19 @@
     --hover-font-color: #0E8388;
     --wrapper-width: clamp(10rem, 70vw, 60rem);
     --ul-padding: clamp(.5rem, 2vw, 2rem);
-    --card-height: clamp(12rem, 25vw, 19rem);
+    --card-height: clamp(15rem, 25vw, 19rem);
 }
 
 * {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+}
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: white;
+    z-index: 1;
 }
 section {
     top: 0;
@@ -23,40 +29,17 @@ section {
     place-content: center;
     place-content: center;
 }
-ul {
-    position: absolute;
-    list-style: none;
-    z-index: 2;
-}
-ul li a {
-    text-decoration: none;
-    color: var(--font-color);
-    font-size: clamp(1.2em, 1.5vw, 1.5em);
-    transition: 200ms ease-in-out;
-    border: 1px solid #ffffff62;
-    display: flex;
-    width: clamp(7rem, 10vw,10rem);
-    padding-block: calc(var(--card-height)*.018);
-    align-items: center;
-    justify-content: center;
-    margin: 5px;
-    background-color: #ffffff0a;
-}
 .active {
     color: var(--hover-font-color);
-    filter: drop-shadow(0px 0px 20px #0E8388);
+    filter: drop-shadow(0px 0px 20px var(--hover-font-color));
 }
-ul li a:hover {
-    color: var(--hover-font-color);
-    filter: drop-shadow(0px 0px 20px #0E8388);
-}
-
 .card-wrapper {
     margin: 0px auto;
     border: 1px solid var(--hover-font-color);
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+    border-radius: calc(var(--card-height)*.05);
 }
 .card {
     height: var(--card-height);
@@ -66,6 +49,7 @@ ul li a:hover {
     position: relative;
     cursor: pointer;
     transition: 200ms ease-in-out;
+    border-radius: calc(var(--card-height)*.05);
 }
 .card::before{
     content: '';
@@ -74,7 +58,8 @@ ul li a:hover {
     height: 100%;
     width: 100%;
     mix-blend-mode: color;
-    transition: 500ms ease-in-out;
+    transition: 200ms ease-in-out;
+    border-radius: calc(var(--card-height)*.05);
 }
 .card::after {
     content: '';
@@ -86,26 +71,33 @@ ul li a:hover {
     top: 50%;
     transform: translate(-50%, -50%);
     filter: drop-shadow(0px 0px 5px var(--hover-font-color));
+    transition: 200ms ease-in-out;
+    pointer-events: none;
+    border-radius: calc(var(--card-height)*.05);
 }
 .card:hover:before {
     opacity: 0;
 }
 .card:hover {
-    scale: 1.1;
+    scale: 1.05;
     z-index: 1;
 }
 
 .bg-blur {
     top: 0;
     left: 0;
-    position: absolute;
+    position: fixed;
     height: 100vh;
     width: 100vw;
     pointer-events: none;
-    transition: 300ms ease;
+    transition: 200ms ease;
 }
 .card:hover ~ .bg-blur {
     backdrop-filter: blur(15px);
+}
+.card:hover a i{
+    
+    filter: drop-shadow(0px 0px 5px var(--hover-font-color));
 }
 .card:first-child {
     background: url(https://i.postimg.cc/wTJh7BwF/aron-visuals-LSFu-PFE9v-KE-unsplash.jpg);
@@ -173,4 +165,16 @@ ul li a:hover {
 }
 
 
+a {
+    text-decoration: none;
+    display: inline-block;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    position: relative;
+}
+a i {
+    font-size: clamp(1em, 2vw, 2em);
+    color: var(--hover-font-color);
+}
 
